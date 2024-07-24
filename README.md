@@ -25,20 +25,23 @@ This console application is designed to interact with a MinIO server set up usin
 
 2. **Run the MinIO Docker container:**
    ```sh
-   docker run -p 9000:9000 -p 9001:9001 --name minio \
-     -e "MINIO_ROOT_USER=<YOUR-ACCESS-KEY>" \
-     -e "MINIO_ROOT_PASSWORD=<YOUR-SECRET-KEY>" \
-     minio/minio server /data --console-address ":9001"
+   docker run -p 9000:9000 --name minio -v /mnt/data:/data -e "MINIO_ROOT_USER=minioadmin" -e "MINIO_ROOT_PASSWORD=minioadmin123" minio/minio server /data
    ```
    Replace `<YOUR-ACCESS-KEY>` and `<YOUR-SECRET-KEY>` with your desired MinIO access and secret keys.
 
-3. **Access the MinIO web console:**
+2. **Failed Docker container:**
+If you cannot install on the Docker side, create a folder named minio in the C directory and put the minioFiles/minio.env file in the project and run the following command.
+   ```sh
+   docker run -dt -p 9000:9000 -p 9001:9001 -v C:\minio\data:/data -v C:\minio\minio.env:/etc/config.env -e "MINIO_CONFIG_ENV_FILE=/etc/config.env" --name "minio_local" minio/minio server /data --console-address ":9001"
+   ```
+
+4. **Access the MinIO web console:**
    Open your browser and navigate to `http://localhost:9001`. Log in using the access and secret keys you provided.
 
 ## Console Application Usage
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/beytullahbuyuktolu/MinIOAPI.git
    cd your-repo-name
    ```
 
