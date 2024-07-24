@@ -30,7 +30,7 @@ This console application is designed to interact with a MinIO server set up usin
    Replace `<YOUR-ACCESS-KEY>` and `<YOUR-SECRET-KEY>` with your desired MinIO access and secret keys.
 
 2. **Failed Docker container:**
-If you cannot install on the Docker side, create a folder named minio in the C directory and put the minioFiles/minio.env file in the project and run the following command.
+If you cannot install on the Docker side, create a folder named minio in the C directory and put the minioFiles/minio.env (https://github.com/beytullahbuyuktolu/MinIOAPI/blob/main/MinIOAPIAPP/minioFiles/minio.env ) file in the project and run the following command.
    ```sh
    docker run -dt -p 9000:9000 -p 9001:9001 -v C:\minio\data:/data -v C:\minio\minio.env:/etc/config.env -e "MINIO_CONFIG_ENV_FILE=/etc/config.env" --name "minio_local" minio/minio server /data --console-address ":9001"
    ```
